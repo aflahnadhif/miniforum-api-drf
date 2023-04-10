@@ -14,7 +14,10 @@ With the condition of:
 
 ## How To Setup
 
-1) Copy env.template into .env and enters the appropriate values (leave it as it is for default values)
+1) Copy env.template into .env and enters the appropriate values (or leave it as it is for default values)
+```
+cp env.template .env
+```
 2) Run the docker compose file
 ```
 docker-compose up -d
