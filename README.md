@@ -20,13 +20,14 @@ cp env.template .env
 ```
 2) Run the docker compose file
 ```
+# In the project root folder
 docker-compose up -d
 ```
 3) Or run the project using local virtual environment if docker is unavailable
 ```
 # In the project root folder
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate # This command is different on windows
 pip install -r backend/requirements.txt
 
 cd backend
