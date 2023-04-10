@@ -8,6 +8,8 @@ from .permissions import UserManagementPermission
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
+    # TODO: Try Session Auth
+    # To enable trying requests in Swagger API Doc
     permission_classes = [UserManagementPermission]
     
     def get_serializer_class(self):
@@ -19,6 +21,8 @@ class UserViewSet(viewsets.ModelViewSet):
         
         return UserSerializer
     
+    # TODO: Soft Delete
+    # Should be implemented in model
     def destroy(self, request, *args, **kwargs):
         user = self.get_object()
         user.is_active = False

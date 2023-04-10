@@ -5,7 +5,7 @@ from .serializers import PostSerializer, CommentSerializer, UpdateCommentSeriali
 from .permissions import ForumUserPermission
 
 class PostViewSet(ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.prefetch_related('comment_set').all()
     serializer_class = PostSerializer
     permission_classes = [ForumUserPermission]
     
