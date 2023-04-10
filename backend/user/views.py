@@ -1,7 +1,9 @@
+from rest_framework import generics
 from rest_framework import viewsets
+from rest_framework import permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, UserUpdateSerializer, AdminUserSerializer
+from .serializers import UserSerializer, UserUpdateSerializer, AdminUserSerializer, UserRoleUpdateSerializer
 from .permissions import UserManagementPermission
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,3 +25,8 @@ class UserViewSet(viewsets.ModelViewSet):
         user.save()
         
         return Response(UserSerializer(user).data)
+    
+class UserRoleUpdate(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRoleUpdateSerializer
+    permission_classes = [permissions.IsAdminUser]
