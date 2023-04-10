@@ -5,12 +5,14 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .serializers import UserSerializer, UserUpdateSerializer, AdminUserSerializer, UserRoleUpdateSerializer
 from .permissions import UserManagementPermission
+from .paginations import UserPagination
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     # TODO: Try Session Auth
     # To enable trying requests in Swagger API Doc
     permission_classes = [UserManagementPermission]
+    pagination_class = UserPagination
     
     def get_serializer_class(self):
         if self.action == 'list':
